@@ -1,5 +1,5 @@
 # Project_Database
-Very simple console app for working with database that is created. Database has 4 tables that you can work with and one junction table.\
+Very simple console app for working with database that is created. Database has 4 tables that you can work with and one junction table.App will join automatically to DB ,there is no need to login.\
 Tables are:
 - customers
 - developers
