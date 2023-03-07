@@ -185,7 +185,9 @@ namespace Project_Database
 
                                     case 4:
 
-                                        try
+                                        while (true)
+                                        {
+                                            try
                                         {
                                             Console.WriteLine("Type name of developer: ");
                                             string nameDev = (Console.ReadLine());
@@ -215,6 +217,9 @@ namespace Project_Database
 
                                             Console.WriteLine(e);
                                         }
+
+                                        }
+                                       
 
                                         break;
 
@@ -250,7 +255,9 @@ namespace Project_Database
                                 {
 
                                     case 1:
-                                        try
+                                        while (true)
+                                        {
+                                            try
                                         {
                                             Console.WriteLine("Type whole name: ");
                                             string name = (Console.ReadLine());
@@ -271,11 +278,16 @@ namespace Project_Database
                                             Console.WriteLine(e);
                                         }
 
+                                        }
+                                       
+
 
                                         break;
 
                                     case 2:
-                                        try
+                                        while (true)
+                                        {
+                                            try
                                         {
                                             Console.WriteLine("Type  name: ");
                                             string name = (Console.ReadLine());
@@ -296,15 +308,23 @@ namespace Project_Database
                                             Console.WriteLine(e);
                                         }
 
+                                        }
+                                       
+
 
                                         break;
 
                                     case 3:
-                                        try
+
+                                        while (true)
+                                        {
+                                            try
                                         {
                                             Console.WriteLine("Type id of order: ");
                                             int id = int.Parse(Console.ReadLine());
                                             Order o = new Order();
+                                            Order_Details od = new Order_Details();
+                                            od.Delete(id);
                                             o.Delete(id);
 
                                             Console.WriteLine("Want to continue? y/n ");
@@ -319,10 +339,15 @@ namespace Project_Database
                                             Console.WriteLine(e);
                                         }
 
+                                        }
+                                       
+
 
                                         break;
                                     case 4:
-                                        try
+                                        while (true)
+                                        {
+                                            try
                                         {
                                             Console.WriteLine("Type name of product: ");
                                             string name = (Console.ReadLine());
@@ -343,6 +368,9 @@ namespace Project_Database
                                             Console.WriteLine(e);
                                         }
 
+
+                                        }
+                                        
 
                                         break;
 
@@ -409,44 +437,44 @@ namespace Project_Database
                                                 Console.WriteLine();
                                                 if (dec == 1)
                                                 { Console.WriteLine("Type old  name of customer: ");
-                                            string oldName = (Console.ReadLine());
-                                            Console.WriteLine("Type new full name of customer: ");
-                                            string name = (Console.ReadLine());
-                                            
-                                            c.UpdateCustomerName(name, oldName);
+                                                    string oldName = (Console.ReadLine());
+                                                    Console.WriteLine("Type new full name of customer: ");
+                                                    string name = (Console.ReadLine());
+
+                                                    c.UpdateCustomerName(name, oldName);
 
                                                 }
                                                 else
-                                                { 
+                                                {
                                                     Console.WriteLine("Type old  address of customer: ");
-                                            string oldAddress = (Console.ReadLine());
-                                            Console.WriteLine("Type new full address of customer: ");
-                                            string address = (Console.ReadLine());
-                                            c.UpdateCustomerAddress(address, oldAddress);
+                                                    string oldAddress = (Console.ReadLine());
+                                                    Console.WriteLine("Type new full address of customer: ");
+                                                    string address = (Console.ReadLine());
+                                                    c.UpdateCustomerAddress(address, oldAddress);
 
                                                 }
-                                            
-                                          
-
-
-                                       
-                                           
 
 
 
-                                            Console.WriteLine("Want to continue? y/n ");
-                                            cont = (Console.ReadLine());
 
 
 
-                                            break;
+
+
+
+                                                Console.WriteLine("Want to continue? y/n ");
+                                                cont = (Console.ReadLine());
+
+
+
+                                                break;
+                                            }
+                                            catch (Exception e)
+                                            {
+
+                                                Console.WriteLine(e);
+                                            }
                                         }
-                                        catch (Exception e)
-                                        {
-
-                                            Console.WriteLine(e);
-                                        }
-                        }
 
 
                                         break;
@@ -507,8 +535,9 @@ namespace Project_Database
                                         break;
 
                                     case 3:
-
-                                        try
+                                        while (true)
+                                        { 
+                                            try
                                         {
                                             Order o = new Order();
                                             Console.WriteLine("Type old  customer for this order: ");
@@ -536,13 +565,17 @@ namespace Project_Database
                                             Console.WriteLine(e);
                                         }
 
+                                        }
+                                       
+
 
                                         break;
 
 
                                     case 4:
-
-                                        try
+                                        while (true)
+                                        { 
+                                            try
                                         {
                                             Console.WriteLine("Type old  name of product: ");
                                             string oldName = (Console.ReadLine());
@@ -569,6 +602,9 @@ namespace Project_Database
 
                                             Console.WriteLine(e);
                                         }
+
+                                        }
+                                       
 
 
                                         break;

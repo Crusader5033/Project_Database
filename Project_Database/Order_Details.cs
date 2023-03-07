@@ -21,6 +21,11 @@ namespace Project_Database
         public int Amount { get => amount; set => amount = value; }
         public bool Payed { get => payed; set => payed = value; }
 
+        public Order_Details() 
+        {
+           
+        }
+
         public Order_Details(int order_id,int product_id,int amount,bool payed) 
         {
             this.order_id = order_id;
@@ -54,7 +59,7 @@ namespace Project_Database
         {
             SqlConnection conn = DatabaseSingleton.GetInstance();
 
-            using (SqlCommand command = new SqlCommand("DELETE FROM order_details WHERE id = @id", conn))
+            using (SqlCommand command = new SqlCommand("DELETE FROM order_details WHERE order_id = @id", conn))
             {
                 command.Parameters.Add(new SqlParameter("@id", id));
                 command.ExecuteNonQuery();
