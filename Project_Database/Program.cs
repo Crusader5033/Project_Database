@@ -17,7 +17,7 @@ namespace Project_Database
 
           
 
-            while (cont == "y")
+            while (cont != "n")
                 {
             Console.WriteLine("Choose operation : \n");
             Console.WriteLine(" 0.Exit \n 1.Add entry\n 2.Remove entry \n 3.Update entry  ");
@@ -54,9 +54,14 @@ namespace Project_Database
 
 
 
+                        /*
+                         * Case 1 je moznost add
+                         * nasledne vybiram co chci pridat
+                         * volam metody ze trid
+                         * abych pridal data
+                         * */
 
-
-                    case 1:
+                    case 1: 
 
                         Console.WriteLine("What do you want to add? : \n");
                         Console.WriteLine(" 0.Return\n 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
@@ -69,7 +74,7 @@ namespace Project_Database
                                 choice = Convert.ToInt32(Console.ReadLine());// vyber tabulky
                                 switch (choice)
                                 {
-                                    case 1:
+                                    case 1: // Customer
 
                                         while (true)
                                         {
@@ -107,7 +112,7 @@ namespace Project_Database
 
 
 
-                                    case 2:
+                                    case 2: //Developer
                                         while (true)
                                         {
                                          try
@@ -136,7 +141,7 @@ namespace Project_Database
 
                                         break;
 
-                                    case 3:
+                                    case 3: // Order
 
                                         while (true) {
                                             try
@@ -183,7 +188,7 @@ namespace Project_Database
 
 
 
-                                    case 4:
+                                    case 4: // Product
 
                                         while (true)
                                         {
@@ -239,6 +244,16 @@ namespace Project_Database
 
                         break;
 
+                    /*
+                     * Case 2 je moznost remove
+                     * nasledne vybiram co chci odebrat
+                     * volam metody ze trid
+                     * abych odstranil data data
+                     * */
+
+
+
+
                     case 2:
                         Console.WriteLine("What do you want to remove? : \n");
                         Console.WriteLine(" 0.Return\n 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
@@ -254,7 +269,7 @@ namespace Project_Database
                                 switch (choice)
                                 {
 
-                                    case 1:
+                                    case 1: // Customer podle jmena
                                         while (true)
                                         {
                                             try
@@ -284,7 +299,7 @@ namespace Project_Database
 
                                         break;
 
-                                    case 2:
+                                    case 2: // Developer podle jmena
                                         while (true)
                                         {
                                             try
@@ -314,7 +329,7 @@ namespace Project_Database
 
                                         break;
 
-                                    case 3:
+                                    case 3: // Order podle id objednavky,odebiram zaznam nejdrive z vazebni tabulky nasledne z ordesrs 
 
                                         while (true)
                                         {
@@ -344,7 +359,7 @@ namespace Project_Database
 
 
                                         break;
-                                    case 4:
+                                    case 4: // Product
                                         while (true)
                                         {
                                             try
@@ -395,7 +410,12 @@ namespace Project_Database
 
 
 
-
+                    /*
+                     * Case 3 je moznost update
+                     * nasledne vybiram co chci upravit
+                     * volam metody ze trid
+                     * abych upravi data
+                     * */
 
                     case 3:
                         Console.WriteLine("What do you want to update? : \n");
@@ -426,7 +446,7 @@ namespace Project_Database
                             {
                                 switch (choice)
                                 {
-                                    case 1:
+                                    case 1: // Customer ,moznost upravit jmeno nebo adresu
                                         while (true)
                                         {
                                             try
@@ -479,7 +499,7 @@ namespace Project_Database
 
                                         break;
 
-                                    case 2:
+                                    case 2: // Developer ,uprava jmena nebo zeme
 
                                         while (true)
                                         {
@@ -534,7 +554,7 @@ namespace Project_Database
 
                                         break;
 
-                                    case 3:
+                                    case 3: // order ,mohu zmenit zakaznika
                                         while (true)
                                         { 
                                             try
@@ -572,7 +592,7 @@ namespace Project_Database
                                         break;
 
 
-                                    case 4:
+                                    case 4: // Product  zmena jmena a ceny
                                         while (true)
                                         { 
                                             try
