@@ -12,11 +12,11 @@ namespace Project_Database
         private int id;
         private int dev_id;
         private string name;
-        private double price;
+        private decimal price;
 
 
 
-        public Product( string name, double price)
+        public Product( string name, decimal price)
         {
             this.name = name;
             this.price = price;
@@ -31,7 +31,7 @@ namespace Project_Database
         public int Id { get => id; set => id = value; }
         public int Dev_id { get => dev_id; set => dev_id = value; }
         public string Name { get => name; set => name = value; }
-        public double Price { get => price; set => price = value; }
+        public decimal Price { get => price; set => price = value; }
 
         public void AddProduct(int id)
         {

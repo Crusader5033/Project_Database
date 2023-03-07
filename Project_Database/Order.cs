@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,13 +22,13 @@ namespace Project_Database
         public int Cust_id { get => cust_id; set => cust_id = value; }
         public DateTime Date { get => date; set => date = value; }
 
-        public void AddOrder(int id)
+        public int AddOrder(int id)
         {
             SqlConnection conn = DatabaseSingleton.GetInstance();
 
             SqlCommand command = null;
 
-            using (command = new SqlCommand("INSERT INTO orders (cust_id,date) VALUES (@Cust_id, @Date)", conn))
+            using (command = new SqlCommand("INSERT INTO orders (cust_id,date) OUTPUT INSERTED.ID VALUES (@Cust_id, @Date)", conn))
             {
 
 
@@ -35,6 +36,11 @@ namespace Project_Database
                 command.Parameters.Add(new SqlParameter("@Date", this.Date));
                 command.ExecuteNonQuery();
 
+                int modified = (int)command.ExecuteScalar();
+
+               
+
+                return modified;
 
 
             }
@@ -61,8 +67,11 @@ namespace Project_Database
                 command.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();
 
+
+
             }
         }
+        
 
         public int GetCustID(string name)
         {
@@ -78,6 +87,9 @@ namespace Project_Database
                 return id;
                 
             }
+
+
+
 
 
 

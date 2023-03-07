@@ -77,7 +77,7 @@ namespace Project_Database
             SqlConnection conn = DatabaseSingleton.GetInstance();
 
 
-            using (SqlCommand command = new SqlCommand("UPDATE developers SET Country=@newData WHERE Country=@oldData", conn))
+            using (SqlCommand command = new SqlCommand("UPDATE developers SET Country=@newData WHERE Name=@oldData", conn))
             {
                 command.Parameters.AddWithValue("@newData", newData);
                 command.Parameters.AddWithValue("@oldData", oldData);

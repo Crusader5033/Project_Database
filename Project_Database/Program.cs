@@ -9,10 +9,20 @@ namespace Project_Database
     {
         static void Main(string[] args)
         {
+           
+
+           string cont = "y";
+
+
+
+          
+
+            while (cont == "y")
+                {
             Console.WriteLine("Choose operation : \n");
-            Console.WriteLine(" 1.Add entry\n 2.Remove entry \n 3.Update entry");
+            Console.WriteLine(" 0.Exit \n 1.Add entry\n 2.Remove entry \n 3.Update entry  ");
             int operation = 0;
-            string cont = "y";
+            
 
             while (true)
             {
@@ -33,18 +43,23 @@ namespace Project_Database
 
 
 
-
-
-          
-
-            while (cont == "y")
-            {
                 switch (operation)
                 {
+
+                    case 0:
+                        cont= "n";
+
+
+                        break;
+
+
+
+
+
                     case 1:
 
                         Console.WriteLine("What do you want to add? : \n");
-                        Console.WriteLine(" 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
+                        Console.WriteLine(" 0.Return\n 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
                         int choice = 0;
                         while (true)
                         {
@@ -55,33 +70,47 @@ namespace Project_Database
                                 switch (choice)
                                 {
                                     case 1:
-                                        try
+
+                                        while (true)
                                         {
-                                            Console.WriteLine("Type whole name: ");
-                                            string name = (Console.ReadLine());
-                                            Console.WriteLine("Type whole address: ");
-                                            string address = (Console.ReadLine());
-                                            Console.WriteLine("Type email: ");
-                                            string email = (Console.ReadLine());
-                                            Customer c = new Customer(name, address, email);
-                                            c.AddCustomer();
-                                            Console.WriteLine("Want to continue? y/n ");
-                                            cont = (Console.ReadLine());
+                                            try
+                                            {
+                                                Console.WriteLine("Type whole name: ");
+                                                string name = (Console.ReadLine());
+                                                Console.WriteLine("Type whole address: ");
+                                                string address = (Console.ReadLine());
+                                                Console.WriteLine("Type email: ");
+                                                string email = (Console.ReadLine());
+                                                Customer c = new Customer(name, address, email);
+                                                c.AddCustomer();
+                                                Console.WriteLine("Want to continue? y/n ");
+                                                cont = (Console.ReadLine());
 
 
-                                            break;
+                                                break;
+                                            }
+                                            catch (Exception e)
+                                            {
+
+                                                Console.WriteLine(e + " \n Try it all again!!! \n(Dont forget @ in email)");
+                                            }
+
                                         }
-                                        catch (Exception e)
-                                        {
 
-                                            Console.WriteLine(e);
-                                        }
 
 
                                         break;
 
+
+
+
+
+
+
                                     case 2:
-                                        try
+                                        while (true)
+                                        {
+                                         try
                                         {
                                             Console.WriteLine("Type surname: ");
                                             string name = (Console.ReadLine());
@@ -101,21 +130,24 @@ namespace Project_Database
 
                                             Console.WriteLine(e);
                                         }
+                                        }
+                                       
 
 
                                         break;
 
                                     case 3:
 
-
-                                        try
+                                        while (true) {
+                                            try
                                         {
                                             Console.WriteLine("Type name of customer making order: ");
                                             string name = (Console.ReadLine());
                                             Order o = new Order();
                                             int cust_id = o.GetCustID(name);
                                             Console.WriteLine("Id of customer: " + cust_id);
-                                            o.AddOrder(cust_id);
+                                            int orderId=o.AddOrder(cust_id);
+                                           
 
 
                                             Console.WriteLine("Type name of product that you want in order: ");
@@ -130,7 +162,7 @@ namespace Project_Database
                                             Console.WriteLine("is it already payed?(Use true or false) : ");
                                             bool payed = bool.Parse(Console.ReadLine());
 
-                                            Order_Details od = new Order_Details(o.Id, product_id, amount, payed);
+                                            Order_Details od = new Order_Details(orderId, product_id, amount, payed);
                                             od.AddDetails();
                                             Console.WriteLine("Want to continue? y/n ");
                                             cont = (Console.ReadLine());
@@ -142,10 +174,14 @@ namespace Project_Database
                                         {
 
                                             Console.WriteLine(e);
-                                        }
+                                        } }
+                                       
 
 
                                         break;
+
+
+
 
                                     case 4:
 
@@ -161,9 +197,9 @@ namespace Project_Database
                                             string name = (Console.ReadLine());
 
                                             Console.WriteLine("Price of product: ");
-                                            double price = int.Parse(Console.ReadLine());
+                                            decimal price = decimal.Parse(Console.ReadLine());
                                             Product p1 = new Product(name, price);
-                                            p.AddProduct(dev_id);
+                                            p1.AddProduct(dev_id);
 
 
 
@@ -200,7 +236,7 @@ namespace Project_Database
 
                     case 2:
                         Console.WriteLine("What do you want to remove? : \n");
-                        Console.WriteLine(" 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
+                        Console.WriteLine(" 0.Return\n 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
                         choice = 0;
                         while (true)
                         {
@@ -335,28 +371,66 @@ namespace Project_Database
 
                     case 3:
                         Console.WriteLine("What do you want to update? : \n");
-                        Console.WriteLine(" 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
-                        choice = 0;
+                        Console.WriteLine(" 0.Return\n 1.Customer\n 2.Developer \n 3.Order \n 4.Product");
+                        
+                        
                         while (true)
                         {
+
+                            while (true)
+                            {
+                                try
+                                {
+                                    Console.WriteLine("Type answer: ");
+                                    choice = Convert.ToInt32(Console.ReadLine());// vyber operace
+
+                                    Console.WriteLine();
+                                    break;
+                                }
+                                catch (System.FormatException)
+                                {
+                                    Console.Write("Only whole numbers!!! ");
+                                    Console.WriteLine();
+                                }
+                            }
+
                             try
                             {
                                 switch (choice)
                                 {
                                     case 1:
-                                        try
+                                        while (true)
                                         {
-                                            Console.WriteLine("Type old  name of customer: ");
+                                            try
+                                            {
+                                                Customer c = new Customer();
+                                                Console.WriteLine("What do you want to update:1.Name 2.Address: ");
+                                                int dec = Convert.ToInt32(Console.ReadLine());// vyber operace
+                                                Console.WriteLine();
+                                                if (dec == 1)
+                                                { Console.WriteLine("Type old  name of customer: ");
                                             string oldName = (Console.ReadLine());
                                             Console.WriteLine("Type new full name of customer: ");
                                             string name = (Console.ReadLine());
-                                            Customer c = new Customer();
+                                            
                                             c.UpdateCustomerName(name, oldName);
-                                            Console.WriteLine("Type old  address of customer: ");
+
+                                                }
+                                                else
+                                                { 
+                                                    Console.WriteLine("Type old  address of customer: ");
                                             string oldAddress = (Console.ReadLine());
                                             Console.WriteLine("Type new full address of customer: ");
                                             string address = (Console.ReadLine());
                                             c.UpdateCustomerAddress(address, oldAddress);
+
+                                                }
+                                            
+                                          
+
+
+                                       
+                                           
 
 
 
@@ -372,40 +446,61 @@ namespace Project_Database
 
                                             Console.WriteLine(e);
                                         }
+                        }
 
 
                                         break;
 
                                     case 2:
 
-                                        try
+                                        while (true)
                                         {
-                                            Console.WriteLine("Type old  name of developer: ");
-                                            string oldName = (Console.ReadLine());
-                                            Console.WriteLine("Type new  name of developer: ");
-                                            string name = (Console.ReadLine());
+                                            try
+                                            {
+                                                Developer d = new Developer();
+                                                Console.WriteLine("What do you want to update:1.Name 2.Country: ");
+                                                int dec = Convert.ToInt32(Console.ReadLine());// vyber operace
+                                                Console.WriteLine();
+                                                if (dec == 1)
+                                                {
+                                                    Console.WriteLine("Type old  name of developer: ");
+                                                    string oldName = (Console.ReadLine());
+                                                    Console.WriteLine("Type new full name of developer: ");
+                                                    string name = (Console.ReadLine());
 
-                                            Developer d = new Developer();
-                                            d.UpdateDeveloperName(name, oldName);
-                                            Console.WriteLine("Type old  country of developer: ");
-                                            string oldCountry = (Console.ReadLine());
-                                            Console.WriteLine("Type new country of developer: ");
-                                            string country = (Console.ReadLine());
-                                            d.UpdateDeveloperCountry(country, oldCountry);
+                                                    d.UpdateDeveloperName(name, oldName);
+
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Type name of developer: ");
+                                                    string oldName = (Console.ReadLine());
+                                                    Console.WriteLine("Type new country of developer: ");
+                                                    string newCountry = (Console.ReadLine());
+                                                    d.UpdateDeveloperCountry(newCountry, oldName);
+
+                                                }
 
 
 
-                                            Console.WriteLine("Want to continue? y/n ");
-                                            cont = (Console.ReadLine());
 
 
 
-                                            break;
-                                        }
-                                        catch (Exception e)
-                                        {
 
-                                            Console.WriteLine(e);
+
+
+                                                Console.WriteLine("Want to continue? y/n ");
+                                                cont = (Console.ReadLine());
+
+
+
+                                                break;
+                                            }
+                                            catch (Exception e)
+                                            {
+
+                                                Console.WriteLine(e);
+                                            }
                                         }
 
 
@@ -496,14 +591,13 @@ namespace Project_Database
                             break;
 
 
-
-
-
-
-
                         }
+
                         break;
                 }
+
+
+
             }
         }
     }
