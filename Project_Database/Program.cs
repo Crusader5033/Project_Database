@@ -195,7 +195,7 @@ namespace Project_Database
                                             int dev_id = p.GetDevID(nameDev);
 
 
-                                            Console.WriteLine("Type name of product that you want in order: ");
+                                            Console.WriteLine("Type name of product : ");
                                             string name = (Console.ReadLine());
 
                                             Console.WriteLine("Price of product: ");
